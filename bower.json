@@ -1,0 +1,23 @@
+{
+  "name": "RSS24H",
+  "version": "0.0.1",
+  "authors": [
+    "Duy Lam <duylamphuong@gmail.com>"
+  ],
+  "description": "A panel right in your browser to display RSS news",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "5.5.2",
+    "jquery": "2.1.4",
+    "lodash": "3.10.1",
+    "angular": "1.4.4",
+    "animate.css": "3.4.0"
+  }
+}

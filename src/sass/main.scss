@@ -1,0 +1,107 @@
+@mixin border-radius {
+  $borderRadius: 5px;
+  border-top-left-radius: $borderRadius;
+  border-top-right-radius: $borderRadius;
+  border-bottom-left-radius: $borderRadius;
+  border-bottom-right-radius: $borderRadius;
+}
+
+.rss60s {
+  //
+  // Include Foundation with some our own customizations (color, padding, etc.)
+  //
+  $modules: (global);
+  @import "../vendors/foundation/scss/foundation/components/forms";
+
+  @include border-radius;
+  $fontSize: 12pt;
+  $fontColor: black;
+  border: 2px solid #c0c0c0;
+  width: 96%;
+  height: 100px;
+
+  // layout
+  margin-left: 2%;
+  position: fixed;
+  z-index: 1; // moving to above default layer (0 level) is good enough for visibility purpose
+  bottom: 20px;
+  
+  // set default styles for text
+  font-size: $fontSize;
+  background-color: white;
+  color: $fontColor;
+
+  form {
+    // overwrite Foundation
+    margin-bottom: 0;
+    // end
+
+    span.animated {
+      margin-left: 10px;
+    }
+  }
+
+  .outter {
+    $boardPadding: 8px;
+    width: 100%;
+
+    // customize the animation
+    .animated { 
+      -webkit-animation-duration: 3s;
+      -webkit-animation-delay: 0;
+    }
+
+    .content {
+      padding: $boardPadding 0 $boardPadding $boardPadding;
+      float: left;
+      width: 95%; // keep .options in same line
+
+      a {
+        color: $fontColor;
+
+        &:hover {
+          text-decoration: underline;
+          color: $fontColor;
+        }
+      }
+
+      .category {
+        margin-bottom: 7px;
+      }
+
+      .https-warning {
+        .icon {
+          $size: 64px;
+          background: {
+            image: url('chrome-extension://__MSG_@@extension_id__/images/warning.png');
+            repeat: no-repeat;
+            size: $size;
+          }
+          margin-right: 10px;
+          width: $size;
+          height: $size;
+          float: left;
+        }
+
+        .text {
+          line-height: 120%;
+          color: #CC3366;
+        }
+      }
+    }
+
+    .options {
+      padding: $boardPadding $boardPadding $boardPadding 0;
+      float: right;
+      width: 2%;
+      text-align: right;
+      
+      .close-button {
+        cursor: pointer;
+        color: #d0d0d0;
+        font-weight: 800;
+        &:hover { color: #a0a0a0; }
+      }
+    }
+  }
+}

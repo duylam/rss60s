@@ -1,0 +1,34 @@
+{
+  "name": "RSS 60s"
+  , "version": "1.0"
+  , "manifest_version": 2
+  , "description": "__MSG_manifestDescription__"
+  , "default_locale": "en"
+  , "icons": {
+  	"16": "images/app16.png" // the favicon for an extension's pages
+  	, "48": "images/app48.png" // in extensions management page (chrome://extensions)
+  	, "128": "images/app128.png" // in Chrome Web Store
+  }
+  , "background": { 
+    "scripts": ["bootstrap.js"]
+    , "persistent": true
+  }
+  , "browser_action": {
+    "default_icon": {
+      "19": "images/browser-action-19.png"
+      , "38": "images/browser-action-38.png"
+    }
+    , "default_title": "__MSG_manifestAccessIconLabel__"
+  }
+  , "permissions": [
+  	"http://*/*", "https://*/*"
+  	, "webRequest" 
+  	, "activeTab"
+  ]
+  , "web_accessible_resources": [
+    "images/warning.png"
+  ]
+
+  // TODO: set url when source code's available
+  // , "homepage_url": ""
+}

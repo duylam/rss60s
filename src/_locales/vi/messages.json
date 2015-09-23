@@ -1,0 +1,17 @@
+{
+  "manifestDescription": {
+    "message": "Đọc tin RSS ngay khi đang duyệt web"
+  }
+  , "manifestAccessIconLabel": {
+    "message": "Đọc tin RSS"
+  }
+  , "news_closeButton": {
+    "message": "Đóng"
+  }
+  , "news_loadingText": {
+    "message": "Đang tải"
+  },
+  "news_httpsBlockingWarningText": {
+    "message": "Rất tiếc là chương trình này không thể hoạt động được do website hiện tại '{0}' đang ở kết nối bảo mật (địa chỉ băt đầu bằng 'https://...'). Xin vui lòng chuyển sang 1 tab trình duyệt bất kì khác mà đang mở website ở kết nối bình thưởng (địa chỉ là 'http://...') và sau đó chạy lại chương trình"
+  }
+}

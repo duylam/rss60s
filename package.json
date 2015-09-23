@@ -1,0 +1,28 @@
+{
+  "name": "RSS24H",
+  "version": "0.0.1",
+  "description": "A panel right in your browser to display RSS news",
+  "main": "bootstrap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Duy Lam",
+  "license": "ISC",
+  "devDependencies": {
+    "async": "^0.9.0",
+    "chai": "^2.2.0",
+    "gulp": "^3.8.11",
+    "gulp-clean": "^0.3.1",
+    "gulp-clean-dest": "^0.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-if": "^1.2.5",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-mocha": "^2.0.1",
+    "gulp-sass": "^1.3.3",
+    "lodash": "^3.10.1",
+    "merge2": "^0.3.5",
+    "promise": "^7.0.0",
+    "q": "^1.3.0",
+    "run-sequence": "^1.1.0"
+  }
+}
