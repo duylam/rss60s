@@ -1,0 +1,11 @@
+*~
+*.err
+*.out
+*.log
+.project
+.metadata
+*.pid
+node_modules/
+tmp/
+dist/
+vendors/
