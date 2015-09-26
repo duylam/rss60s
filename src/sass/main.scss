@@ -13,6 +13,15 @@
   $modules: (global);
   @import "../vendors/foundation/scss/foundation/components/forms";
 
+  //
+  // Include Foundation Font Icons
+  // As instruction to integrate Foundation Font Icons, we should define $fi-path variable as below
+  // $fi-path: "chrome-extension://__MSG_@@extension_id__/fonts";  
+  // However, the "__MSG_@@extension_id__" in $fi-path doesn't work
+  // for some Chrome versions, so the font file will be injected by javascript in launch-app.js
+  //
+  @import "../vendors/foundation-icon-fonts/_foundation-icons.scss";
+
   @include border-radius;
   $fontSize: 12pt;
   $fontColor: black;
@@ -54,7 +63,7 @@
     .content {
       padding: $boardPadding 0 $boardPadding $boardPadding;
       float: left;
-      width: 95%; // keep .options in same line
+      width: 90%; // keep .options in same line
 
       a {
         color: $fontColor;
@@ -93,7 +102,7 @@
     .options {
       padding: $boardPadding $boardPadding $boardPadding 0;
       float: right;
-      width: 2%;
+      width: 4%;
       text-align: right;
       
       .close-button {

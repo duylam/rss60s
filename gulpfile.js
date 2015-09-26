@@ -28,6 +28,7 @@ gulp.task('build:css', function() {
 gulp.task('copy:others', function() {
   var outLocaleFolder = 'dist/_locales'
     , outImagesFolder = 'dist/images'
+    , outFontFolder = 'dist/fonts'
   return merge2([
     gulp.src('src/_locales/**/*')
       .pipe(plugins.cleanDest(outLocaleFolder))
@@ -36,6 +37,10 @@ gulp.task('copy:others', function() {
     gulp.src('src/images/**/*')
       .pipe(plugins.cleanDest(outImagesFolder))
       .pipe(gulp.dest(outImagesFolder))
+    ,
+    gulp.src('src/vendors/foundation-icon-fonts/foundation-icons.woff')
+      .pipe(plugins.cleanDest(outFontFolder))
+      .pipe(gulp.dest(outFontFolder))
     ,
     gulp.src(['src/bootstrap.js', 'src/manifest.json', 'src/options.htm'])
       .pipe(gulp.dest('dist'))

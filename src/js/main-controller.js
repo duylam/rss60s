@@ -40,6 +40,16 @@ angular
       });
     };
 
+    scope.openOptionsPage = function() {
+      // code from sample in Google document
+      if (chrome.runtime.openOptionsPage) {
+        // if Chrome 42+
+        chrome.runtime.openOptionsPage();
+      } else {
+        window.open(chrome.runtime.getURL('options.htm'));
+      }
+    };
+
     scope.data = {
       selectedSource: rssSources[0],
       sources: rssSources,

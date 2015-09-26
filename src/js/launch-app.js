@@ -1,4 +1,12 @@
 (function(global) {
+  // inject font file (Foundation Font Icon package) into document
+  var fontFaceCssElement = document.createElement('style');
+  fontFaceCssElement.type = 'text/css';
+  fontFaceCssElement.textContent = '@font-face { font-family: "foundation-icons"; src: url("' +
+    chrome.extension.getURL('fonts/foundation-icons.woff') +
+    '") format("woff"); font-weight: normal; font-style: normal; }';
+  document.head.appendChild(fontFaceCssElement);
+
   var rootElement = angular.element(
     '<div id="rss24hContainer" class="rss60s" ng-controller="MainController" ng-show="appearance.visible">' +
       '<div class="outter">' +
@@ -20,6 +28,7 @@
           '</div>' +
         '</div>' + 
         '<div class="options">' +
+          '<a void ng-click="openOptionsPage()"><i class="fi-widget"></i></a>' +
           '<span class="close-button" '+
             'title="{{ appearance.closeButtonTitle }}" ' +
             'ng-click="appearance.visible = false">X</span>' +
