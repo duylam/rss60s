@@ -1,0 +1,6 @@
+{
+  "directory": "src/vendors/",
+  "interactive": false,
+  "strict-ssl": false,
+  "https-proxy": ""
+}
