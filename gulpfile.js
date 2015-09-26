@@ -27,7 +27,7 @@ gulp.task('build:css', function() {
 
 gulp.task('copy:others', function() {
   var outLocaleFolder = 'dist/_locales'
-  var outImagesFolder = 'dist/images'
+    , outImagesFolder = 'dist/images'
   return merge2([
     gulp.src('src/_locales/**/*')
       .pipe(plugins.cleanDest(outLocaleFolder))
@@ -37,7 +37,7 @@ gulp.task('copy:others', function() {
       .pipe(plugins.cleanDest(outImagesFolder))
       .pipe(gulp.dest(outImagesFolder))
     ,
-    gulp.src(['src/bootstrap.js', 'src/manifest.json'])
+    gulp.src(['src/bootstrap.js', 'src/manifest.json', 'src/options.htm'])
       .pipe(gulp.dest('dist'))
   ])
 })
