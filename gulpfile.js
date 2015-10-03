@@ -5,17 +5,23 @@ var gulp            = require('gulp')
   , runSequence     = require('run-sequence')
 
 gulp.task('build:js', function() {
-  return gulp.src([
-      'src/vendors/jquery/dist/jquery.js',
-      'src/vendors/angular/angular.js',
-      'src/vendors/foundation/js/foundation.js',
-      'src/vendors/lodash/lodash.js',
-      'src/js/app.js',
-      'src/js/**/!(launch-app.js)',
-      'src/js/launch-app.js'
-    ])
-    .pipe(plugins.concat('main.js'))
-    .pipe(gulp.dest('dist/js'))
+  return merge2([
+    gulp.src([
+        'src/vendors/jquery/dist/jquery.js',
+        'src/vendors/angular/angular.js',
+        'src/vendors/foundation/js/foundation.js',
+        'src/vendors/lodash/lodash.js',
+        'src/js/app.js',
+        'src/js/**/!(launch-app.js)',
+        'src/js/launch-app.js'
+      ])
+      .pipe(plugins.concat('main.js'))
+      .pipe(gulp.dest('dist/js'))
+    ,
+    gulp.src('src/pages/options.js')
+      .pipe(gulp.dest('dist/pages'))
+  ])
+
 })
 
 gulp.task('build:css', function() {
@@ -38,7 +44,7 @@ gulp.task('copy:others', function() {
       .pipe(plugins.cleanDest(outImagesFolder))
       .pipe(gulp.dest(outImagesFolder))
     ,
-    gulp.src('src/vendors/foundation-icon-fonts/foundation-icons.woff')
+    gulp.src(['src/vendors/foundation-icon-fonts/foundation-icons.woff', 'src/vendors/foundation-icon-fonts/foundation-icons.css'])
       .pipe(plugins.cleanDest(outFontFolder))
       .pipe(gulp.dest(outFontFolder))
     ,
@@ -47,9 +53,20 @@ gulp.task('copy:others', function() {
     ,
     gulp.src('src/pages/*.htm')
       .pipe(gulp.dest('dist/pages'))
+    ,
+    gulp.src(['src/vendors/foundation/css/foundation.min.css', 'src/vendors/foundation/css/normalize.min.css'])
+      .pipe(plugins.cleanDest('dist/pages/css'))
+      .pipe(gulp.dest('dist/pages/css'))
+    ,
+    gulp.src([
+        'src/vendors/jquery/dist/jquery.js',
+        'src/vendors/angular/angular.js',
+        'src/vendors/foundation/js/foundation.js',
+        'src/vendors/lodash/lodash.js'
+      ])
+      .pipe(gulp.dest('dist/pages/js'))
   ])
 })
-
 
 gulp.task('test', function() {
   return gulp.src(['test/bootstrap.js', 'test/*.js'], { read: false })
@@ -63,9 +80,10 @@ gulp.task('watch', ['build'], function() {
   _.each(['src/_locales/**/*', 'src/images/*', 'src/pages/*.htm', 'src/*.*'], function(path) {
     gulp.watch(path, ['copy:others'])
   })
+  _.each(['src/js/**/*', 'src/pages/options.js'], function(path) {
+    gulp.watch(path, ['build:js'])
+  })
   gulp.watch('src/sass/main.scss', ['build:css'])
-  gulp.watch('src/js/**/*', ['build:js'])
-
   console.info('Watching changes ...')
 })
 

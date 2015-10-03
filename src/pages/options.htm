@@ -1,8 +1,18 @@
-<html>
+<html ng-app="App">
   <head>
     <title>Options</title>
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="../fonts/foundation-icons.css">
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/foundation.js"></script>
+    <script type="text/javascript" src="js/lodash.js"></script>
+    <script type="text/javascript" src="options.js"></script>
   </head>
-  <body>
-    <h1>Option page</h1>
+  <body ng-controller="MainCtrl">
+    <h1 ng-bind="title"></h1>
   </body>
 </html>
