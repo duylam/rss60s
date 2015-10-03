@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="../css/foundation.min.css">
     <link rel="stylesheet" href="../../fonts/foundation-icons.css">
 
+    <style>
+      body {
+        padding: 5px 5px;
+      }
+    </style>
+
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/angular.js"></script>
     <script type="text/javascript" src="../js/foundation.js"></script>
@@ -13,6 +19,37 @@
     <script type="text/javascript" src="app.js"></script>
   </head>
   <body ng-controller="MainCtrl">
-    <h1 ng-bind="title"></h1>
+    <form>
+      <fieldset>
+        <legend ng-bind="appearance.newSourceSectionText"></legend>
+        <div class="row left">
+          <div class="small-3 columns">
+            <input type="text" placeholder="{{ appearance.newSourceNamePlaceholderText }}" />
+          </div>
+          <div class="small-5 columns">
+            <input type="text" placeholder="{{ appearance.newSourceUrlPlaceholderText }}" />
+          </div>
+          <div class="small-1 columns end">
+            <a void ng-click="createNewEntry()"><i class="fi-check"></i></a>
+          </div>
+        </div>
+      </fieldset>
+      <div ng-repeat="entry in entries track by $index">
+        <div class="row left">
+          <div class="small-3 columns">
+            <a void ng-bind="entry.name" ng-click="entry.newName=entry.name; entry.edit=true" ng-hide="entry.edit"></a>
+            <input type="text" ng-model="entry.newName" placeholder="{{ appearance.newSourceNamePlaceholderText }}" ng-show="entry.edit" />
+          </div>
+          <div class="small-5 columns" ng-class="{ 'end': !entry.edit }">
+            <a void ng-bind="entry.url" ng-click="entry.newUrl=entry.url; entry.edit=true" ng-hide="entry.edit"></a>
+            <input type="text" ng-model="entry.newUrl" placeholder="{{ appearance.newSourceUrlPlaceholderText }}" ng-show="entry.edit" />
+          </div>
+          <div class="small-1 columns" ng-class="{ 'end': entry.edit }" ng-show="entry.edit">
+            <a void ng-click="updateEntry(entry)"><i class="fi-check"></i></a>
+            <a void ng-click="entry.edit=false"><i class="fi-x"></i></a>
+          </div>
+        </div>
+      </div>
+    <form>
   </body>
 </html>
