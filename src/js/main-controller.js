@@ -46,7 +46,7 @@ angular
         // if Chrome 42+
         chrome.runtime.openOptionsPage();
       } else {
-        window.open(chrome.runtime.getURL('pages/options.htm'));
+        window.open(chrome.runtime.getURL('pages/options/index.htm'));
       }
     };
 

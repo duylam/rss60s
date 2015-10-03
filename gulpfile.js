@@ -18,7 +18,7 @@ gulp.task('build:js', function() {
       .pipe(plugins.concat('main.js'))
       .pipe(gulp.dest('dist/js'))
     ,
-    gulp.src('src/pages/options.js')
+    gulp.src('src/pages/**/*.js')
       .pipe(gulp.dest('dist/pages'))
   ])
 
@@ -51,7 +51,7 @@ gulp.task('copy:others', function() {
     gulp.src('src/*.*')
       .pipe(gulp.dest('dist'))
     ,
-    gulp.src('src/pages/*.htm')
+    gulp.src('src/pages/**/*.htm')
       .pipe(gulp.dest('dist/pages'))
     ,
     gulp.src(['src/vendors/foundation/css/foundation.min.css', 'src/vendors/foundation/css/normalize.min.css'])
@@ -77,10 +77,10 @@ gulp.task('test', function() {
 })
 
 gulp.task('watch', ['build'], function() {
-  _.each(['src/_locales/**/*', 'src/images/*', 'src/pages/*.htm', 'src/*.*'], function(path) {
+  _.each(['src/_locales/**/*', 'src/images/*', 'src/pages/**/*.htm', 'src/*.*'], function(path) {
     gulp.watch(path, ['copy:others'])
   })
-  _.each(['src/js/**/*', 'src/pages/options.js'], function(path) {
+  _.each(['src/js/**/*', 'src/pages/**/*.js'], function(path) {
     gulp.watch(path, ['build:js'])
   })
   gulp.watch('src/sass/main.scss', ['build:css'])
