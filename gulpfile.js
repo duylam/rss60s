@@ -42,8 +42,11 @@ gulp.task('copy:others', function() {
       .pipe(plugins.cleanDest(outFontFolder))
       .pipe(gulp.dest(outFontFolder))
     ,
-    gulp.src(['src/bootstrap.js', 'src/manifest.json', 'src/options.htm'])
+    gulp.src('src/*.*')
       .pipe(gulp.dest('dist'))
+    ,
+    gulp.src('src/pages/*.htm')
+      .pipe(gulp.dest('dist/pages'))
   ])
 })
 
@@ -57,7 +60,7 @@ gulp.task('test', function() {
 })
 
 gulp.task('watch', ['build'], function() {
-  _.each(['src/_locales/**/*', 'src/images/*', 'src/bootstrap.js', 'src/manifest.json'], function(path) {
+  _.each(['src/_locales/**/*', 'src/images/*', 'src/pages/*.htm', 'src/*.*'], function(path) {
     gulp.watch(path, ['copy:others'])
   })
   gulp.watch('src/sass/main.scss', ['build:css'])

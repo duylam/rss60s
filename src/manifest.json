@@ -29,10 +29,10 @@
   , "web_accessible_resources": [
     "images/warning.png"
     , "fonts/foundation-icons.woff"
-    , "options.htm" // to enable openning options.htm from content script
+    , "pages/*.htm" // to enable openning options.htm from content script
   ]
   , "options_ui": {
-    "page": "options.htm"
+    "page": "pages/options.htm"
     , "chrome_style": true
   }
 }
