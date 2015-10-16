@@ -15,10 +15,10 @@
     "message": "My apologize. This extension can't work as you're at website '{0}' which is served in a secure connection (e.g. the website url starts with 'https://...'). Kindly to switch to any browser tab which opens a normal website (url starts with 'http://...') and then launch the extension again"
   },
   "news_newSourceNamePlaceholderText": {
-    "message": "Name: exp. Mobile Technology News"
+    "message": "e.g. Mobile Technology News"
   },
   "news_newSourceUrlPlaceholderText": {
-    "message": "Url: exp. http://website.com/rss"
+    "message": "e.g. http://website.com/rss"
   },
   "news_newSourceSectionText": {
     "message": "New RSS source"

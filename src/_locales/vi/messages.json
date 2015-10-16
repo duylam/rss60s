@@ -15,10 +15,10 @@
     "message": "Rất tiếc là chương trình này không thể hoạt động được do website hiện tại '{0}' đang ở kết nối bảo mật (địa chỉ băt đầu bằng 'https://...'). Xin vui lòng chuyển sang 1 tab trình duyệt bất kì khác mà đang mở website ở kết nối bình thưởng (địa chỉ là 'http://...') và sau đó chạy lại chương trình"
   },
   "news_newSourceNamePlaceholderText": {
-    "message": "Nguồn RSS: Tin Công Nghệ Di Động:"
+    "message": "vd: tin công nghệ"
   },
   "news_newSourceUrlPlaceholderText": {
-    "message": "Địa chỉ nguồn RSS: http://website.com/tinrss"
+    "message": "vd: http://website.com/tinrss"
   },
   "news_newSourceSectionText": {
     "message": "Thêm mới"
