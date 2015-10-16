@@ -36,17 +36,16 @@
       </fieldset>
       <div ng-repeat="entry in entries track by $index">
         <div class="row left">
-          <div class="small-3 columns">
-            <a void ng-bind="entry.name" ng-click="entry.newName=entry.name; entry.edit=true" ng-hide="entry.edit"></a>
-            <input type="text" ng-model="entry.newName" placeholder="{{ appearance.newSourceNamePlaceholderText }}" ng-show="entry.edit" />
-          </div>
-          <div class="small-5 columns" ng-class="{ 'end': !entry.edit }">
-            <a void ng-bind="entry.url" ng-click="entry.newUrl=entry.url; entry.edit=true" ng-hide="entry.edit"></a>
-            <input type="text" ng-model="entry.newUrl" placeholder="{{ appearance.newSourceUrlPlaceholderText }}" ng-show="entry.edit" />
-          </div>
-          <div class="small-1 columns" ng-class="{ 'end': entry.edit }" ng-show="entry.edit">
-            <a void ng-click="updateEntry(entry)"><i class="fi-check"></i></a>
+          <div class="small-1 columns" ng-show="entry.edit">
             <a void ng-click="entry.edit=false"><i class="fi-x"></i></a>
+            <a void ng-click="updateEntry(entry)"><i class="fi-check"></i></a>
+          </div>
+          <div class="small-3 columns" ng-class="{ 'end': !entry.edit }">
+            <a void ng-bind="entry.name" ng-click="entry.newName=entry.name; entry.newUrl=entry.url; entry.edit=true" ng-hide="entry.edit"></a>
+            <input type="text" ng-model="entry.newName" ng-show="entry.edit" />
+          </div>
+          <div class="small-5 columns" ng-class="{ 'end': entry.edit }" ng-show="entry.edit">
+            <input type="text" ng-model="entry.newUrl" />
           </div>
         </div>
       </div>
