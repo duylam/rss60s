@@ -7,7 +7,9 @@ angular.module("App", [])
       }
     };
   })
-  .controller("MainCtrl", function($scope) {
+  .value("ChromeStorage", chrome.storage)
+  .service("db", ["ChromeStorage", window.DbService]);
+  .controller("MainCtrl", function($scope, db) {
     $scope.appearance = {
       newSourceNamePlaceholderText: chrome.i18n.getMessage('news_newSourceNamePlaceholderText'),
       newSourceUrlPlaceholderText: chrome.i18n.getMessage('news_newSourceUrlPlaceholderText'),
@@ -16,6 +18,10 @@ angular.module("App", [])
 
     $scope.updateEntry = function(entry) {
       entry.edit = false;
+    };
+
+    $scope.createNewEntry = function() {
+
     };
 
     $scope.entries = [

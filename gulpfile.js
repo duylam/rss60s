@@ -63,7 +63,8 @@ gulp.task('copy:others', function() {
         'src/vendors/jquery/dist/jquery.js',
         'src/vendors/angular/angular.js',
         'src/vendors/foundation/js/foundation.js',
-        'src/vendors/lodash/lodash.js'
+        'src/vendors/lodash/lodash.js',
+        'src/js/services/db.js'
       ])
       .pipe(gulp.dest('dist/pages/js'))
   ])

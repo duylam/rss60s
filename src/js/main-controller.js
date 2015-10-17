@@ -1,6 +1,6 @@
 angular
   .module("rss24h")
-  .controller("MainController", ["$scope", "network", function(scope, network) {
+  .controller("MainController", ["$scope", "network", "db", function(scope, network, db) {
     const rssSources = [
       {
         id: 1,

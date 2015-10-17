@@ -25,6 +25,7 @@
     "http://*/*", "https://*/*"
     , "webRequest" 
     , "activeTab"
+    , "storage"
   ]
   , "web_accessible_resources": [
     "images/warning.png"
