@@ -7,9 +7,9 @@ angular.module("App", [])
       }
     };
   })
-  .value("ChromeStorage", chrome.storage)
-  .service("db", ["ChromeStorage", window.DbService]);
-  .controller("MainCtrl", function($scope, db) {
+  .value("chrome", chrome)
+  .service("db", ["chrome", window.DbService]);
+  .controller("MainCtrl", function($scope, $timeout, db) {
     $scope.appearance = {
       newSourceNamePlaceholderText: chrome.i18n.getMessage('news_newSourceNamePlaceholderText'),
       newSourceUrlPlaceholderText: chrome.i18n.getMessage('news_newSourceUrlPlaceholderText'),
@@ -24,18 +24,14 @@ angular.module("App", [])
 
     };
 
-    $scope.entries = [
-      {
-        edit: false,
-        id: 1,
-        name: 'test',
-        url: 'http://local1.com'
-      },
-      {
-        edit: false,
-        id: 2,
-        name: 'test2',
-        url: 'http://local2.com'
-      }
-    ];
+    db.getAll().then(function(items) {
+      $timeout(function() {
+        // TODO: handle case of empty data
+        $scope.entries = _.map(items, function(it) {
+          return _.assign({ edit: false }, it);
+        });
+      }, 0);
+    }, function() {
+      // TODO: now what ?
+    });
   });

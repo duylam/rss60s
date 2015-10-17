@@ -1,5 +1,5 @@
 angular
   .module("rss24h")
-  .value("ChromeStorage", chrome.storage)
+  .value("chrome", chrome)
   .service("network", ["$http", window.NetworkService])
-  .service("db", ["ChromeStorage", window.DbService]);
+  .service("db", ["chrome", window.DbService]);
