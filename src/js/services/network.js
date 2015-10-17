@@ -1,8 +1,4 @@
-(function() {
-  angular
-    .module("rss24h")
-    .service("network", ["$http", Service]);
-
+(function(ns) {  
   function Service($http) {
     this.$http = $http;
   }
@@ -26,4 +22,6 @@
       }
     });
   };
-})();
+
+  ns.NetworkService = Service;
+})(window);

@@ -12,7 +12,8 @@ gulp.task('build:js', function() {
         'src/vendors/foundation/js/foundation.js',
         'src/vendors/lodash/lodash.js',
         'src/js/app.js',
-        'src/js/**/!(launch-app.js)',
+        'src/js/**/!(launch-app.js|module-registration.js)',
+        'src/js/module-registration.js',
         'src/js/launch-app.js'
       ])
       .pipe(plugins.concat('main.js'))
