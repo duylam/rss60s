@@ -104,12 +104,22 @@
       float: right;
       width: 4%;
       text-align: right;
+
+      i {
+        margin-right: 8px;
+        font-size: 1.1em;
+        opacity: 0.4;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
       
       .close-button {
         cursor: pointer;
         color: #d0d0d0;
         font-weight: 800;
-        &:hover { color: #a0a0a0; }
+        &:hover { color: $fontColor; }
       }
     }
   }
