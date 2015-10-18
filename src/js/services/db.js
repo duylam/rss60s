@@ -18,7 +18,7 @@
     var that = this;
     return new Promise(function(resolve, reject) {
       getRawRssItems.call(that, function(objectItems) {
-        objectItems['field' + item.id] = item;
+        objectItems['field' + item.id] = _.pick(item, 'id', 'name', 'url');
         saveItems.call(that, objectItems, resolve, reject);
       }, reject);
     });

@@ -19,7 +19,14 @@ angular.module("App", [])
     $scope.newEntry = { name: '', url: '' };
 
     $scope.updateEntry = function(entry) {
-      entry.edit = false;
+      db.save(entry).then(
+        function() {
+          $timeout(function() {
+            entry.edit = false;
+          });
+        },
+        handleIOError
+      );
     };
 
     $scope.createNewEntry = function() {
@@ -30,9 +37,9 @@ angular.module("App", [])
             $scope.newEntry = { name: '', url: '' };
             $scope.entries.push(addExtraField(newEntry));
           });
-        },function() {
-          // TODO: save new entry unsuccessfully, now what ?
-      });
+        }, 
+        handleIOError
+      );
     };
 
     db.getAll().then(function(items) {
@@ -46,4 +53,9 @@ angular.module("App", [])
     });
           
     function addExtraField(item) { return _.assign({ edit: false }, item); }
+    
+    function handleIOError() {
+      // TODO: save new entry unsuccessfully, now what ?
+      
+    }
   });
