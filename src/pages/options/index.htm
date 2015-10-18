@@ -37,12 +37,14 @@
       </fieldset>
       <div ng-repeat="entry in entries track by $index">
         <div class="row left">
-          <div class="small-1 columns" ng-show="entry.edit">
-            <a void ng-click="entry.edit=false"><i class="fi-x"></i></a>
-            <a void ng-click="entry.name=entry.newName; entry.url=entry.newUrl; updateEntry(entry)"><i class="fi-check"></i></a>
+          <div class="small-1 columns">
+            <a void ng-click="removeEntry(entry.id)"><i class="fi-trash"></i></a>
+            <a void ng-hide="entry.edit" ng-click="editEntry(entry)"><i class="fi-pencil"></i></a>
+            <a void ng-click="entry.edit=false" ng-show="entry.edit"><i class="fi-x"></i></a>
+            <a void ng-click="updateEntry(entry)" ng-show="entry.edit"><i class="fi-check"></i></a>
           </div>
           <div class="small-3 columns" ng-class="{ 'end': !entry.edit }">
-            <a void ng-bind="entry.name" ng-click="entry.newName=entry.name; entry.newUrl=entry.url; entry.edit=true" ng-hide="entry.edit"></a>
+            <a void ng-bind="entry.name" ng-click="editEntry(entry)" ng-hide="entry.edit"></a>
             <input type="text" ng-model="entry.newName" ng-show="entry.edit" />
           </div>
           <div class="small-5 columns" ng-class="{ 'end': entry.edit }" ng-show="entry.edit">

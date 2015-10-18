@@ -19,10 +19,29 @@ angular.module("App", [])
     $scope.newEntry = { name: '', url: '' };
 
     $scope.updateEntry = function(entry) {
+      entry.name = entry.newName;
+      entry.url = entry.newUrl;
       db.save(entry).then(
         function() {
           $timeout(function() {
             entry.edit = false;
+          });
+        },
+        handleIOError
+      );
+    };
+
+    $scope.editEntry = function(entry) {
+      entry.newName = entry.name;
+      entry.newUrl = entry.url;
+      entry.edit = true;
+    };
+
+    $scope.removeEntry = function(id) {
+      db.remove(id).then(
+        function() {
+          $timeout(function() {
+            $scope.entries = _.reject($scope.entries, function(it) { return it.id == id });
           });
         },
         handleIOError
