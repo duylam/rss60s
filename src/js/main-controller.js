@@ -1,24 +1,6 @@
 angular
   .module("rss24h")
   .controller("MainController", ["$scope", "network", "db", function(scope, network, db) {
-    const rssSources = [
-      {
-        id: 1,
-        name: 'Thời sự - VnExpress',
-        url: 'http://vnexpress.net/rss/thoi-su.rss'
-      },
-      {
-        id: 2,
-        name: 'Công nghệ - Thanh Niên',
-        url: 'http://www.thanhnien.com.vn/rss/cong-nghe-thong-tin.rss'
-      },
-      {
-        id: 3,
-        name: 'Thể thao - VnExpress',
-        url: 'http://vnexpress.net/rss/the-thao.rss'
-      }
-    ];
-    
     scope.appearance = {
       httpsBlocking: location.protocol === 'https:',
       httpsBlockingWarningText: chrome.i18n.getMessage('news_httpsBlockingWarningText').replace('{0}', `${location.protocol}\/\/${location.host}`),
@@ -50,12 +32,20 @@ angular
       }
     };
 
-    scope.data = {
-      selectedSource: rssSources[0],
-      sources: rssSources,
-      rssItems: [ ]
-    };
-
-    scope.onRssSourceChanged(); // show selected rss source
-
+    db.getAll().then(function(items) {
+      if (items.length == 0) {
+        // TODO: handle empty data
+        
+      } else {
+        scope.data = {
+          selectedSource: items[0],
+          sources: items,
+          rssItems: [ ]
+        };
+        scope.onRssSourceChanged(); // show selected rss source
+      }
+    }, function() {
+      // TODO: save new entry unsuccessfully, now what ?
+      
+    });
   }]);
