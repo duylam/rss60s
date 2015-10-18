@@ -25,5 +25,8 @@
   },
   "news_wrongUrlPatternValidationText" : {
     "message": "An url should look like 'http://<something>.com'"
+  },
+  "news_ButtonTooltipButtonText": {
+    "message": "Option page"
   }
 }

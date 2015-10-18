@@ -28,7 +28,11 @@
           '</div>' +
         '</div>' + 
         '<div class="options">' +
-          '<a void ng-click="openOptionsPage()"><i class="fi-widget"></i></a>' +
+          '<a ' +
+            'void ng-click="openOptionsPage()" ' +
+            'title="{{ appearance.optionButtonTooltipText }}">' +
+              '<i class="fi-widget"></i>' +
+          '</a>' +
           '<span class="close-button" '+
             'title="{{ appearance.closeButtonTitle }}" ' +
             'ng-click="appearance.visible = false">X</span>' +

@@ -25,5 +25,8 @@
   },
   "news_wrongUrlPatternValidationText" : {
     "message": "Địa chỉ có dạng 'http://<tên website>.com'"
+  },
+  "news_ButtonTooltipButtonText": {
+    "message": "Trang tuỳ chỉnh"
   }
 }

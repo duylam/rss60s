@@ -4,6 +4,7 @@ angular
     scope.appearance = {
       httpsBlocking: location.protocol === 'https:',
       httpsBlockingWarningText: chrome.i18n.getMessage('news_httpsBlockingWarningText').replace('{0}', `${location.protocol}\/\/${location.host}`),
+      optionButtonTooltipText: chrome.i18n.getMessage('news_ButtonTooltipButtonText'),
       inLoadingProgress: false,
       visible : true,
       closeButtonTitle: chrome.i18n.getMessage('news_closeButton'),
