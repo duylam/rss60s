@@ -14,7 +14,8 @@ angular.module("App", [])
     $scope.appearance = {
       newSourceNamePlaceholderText: chrome.i18n.getMessage('news_newSourceNamePlaceholderText'),
       newSourceUrlPlaceholderText: chrome.i18n.getMessage('news_newSourceUrlPlaceholderText'),
-      newSourceSectionText: chrome.i18n.getMessage('news_newSourceSectionText')
+      newSourceSectionText: chrome.i18n.getMessage('news_newSourceSectionText'),
+      wrongUrlPatternValidationText: chrome.i18n.getMessage('news_wrongUrlPatternValidationText')
     };
     $scope.newEntry = { name: '', url: '' };
 

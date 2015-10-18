@@ -22,5 +22,8 @@
   },
   "news_newSourceSectionText": {
     "message": "Thêm mới"
+  },
+  "news_wrongUrlPatternValidationText" : {
+    "message": "Địa chỉ có dạng 'http://<tên website>.com'"
   }
 }

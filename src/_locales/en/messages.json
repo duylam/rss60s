@@ -22,5 +22,8 @@
   },
   "news_newSourceSectionText": {
     "message": "New RSS source"
+  },
+  "news_wrongUrlPatternValidationText" : {
+    "message": "An url should look like 'http://<something>.com'"
   }
 }
