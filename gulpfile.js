@@ -32,7 +32,14 @@ gulp.task('build:css', function() {
     .pipe(gulp.dest('dist/css'))
 })
 
-gulp.task('copy:others', function() {
+gulp.task('copy:js', function() {
+  return gulp.src([
+      'src/js/services/db.js'
+    ])
+    .pipe(gulp.dest('dist/pages/js'))
+})
+
+gulp.task('copy:others', ['copy:js'], function() {
   var outLocaleFolder = 'dist/_locales'
     , outImagesFolder = 'dist/images'
     , outFontFolder = 'dist/fonts'
@@ -63,8 +70,7 @@ gulp.task('copy:others', function() {
         'src/vendors/jquery/dist/jquery.js',
         'src/vendors/angular/angular.js',
         'src/vendors/foundation/js/foundation.js',
-        'src/vendors/lodash/lodash.js',
-        'src/js/services/db.js'
+        'src/vendors/lodash/lodash.js'
       ])
       .pipe(gulp.dest('dist/pages/js'))
   ])
@@ -83,7 +89,7 @@ gulp.task('watch', ['build'], function() {
     gulp.watch(path, ['copy:others'])
   })
   _.each(['src/js/**/*', 'src/pages/**/*.js'], function(path) {
-    gulp.watch(path, ['build:js'])
+    gulp.watch(path, ['build:js', 'copy:js'])
   })
   gulp.watch('src/sass/main.scss', ['build:css'])
   console.info('Watching changes ...')
