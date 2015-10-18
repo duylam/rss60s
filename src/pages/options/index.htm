@@ -25,10 +25,10 @@
         <legend ng-bind="appearance.newSourceSectionText"></legend>
         <div class="row left">
           <div class="small-3 columns">
-            <input type="text" placeholder="{{ appearance.newSourceNamePlaceholderText }}" />
+            <input type="text" ng-model="newEntry.name" placeholder="{{ appearance.newSourceNamePlaceholderText }}" />
           </div>
           <div class="small-5 columns">
-            <input type="text" placeholder="{{ appearance.newSourceUrlPlaceholderText }}" />
+            <input type="text" ng-model="newEntry.url" placeholder="{{ appearance.newSourceUrlPlaceholderText }}" />
           </div>
           <div class="small-1 columns end">
             <a void ng-click="createNewEntry()"><i class="fi-check"></i></a>

@@ -8,30 +8,42 @@ angular.module("App", [])
     };
   })
   .value("chrome", chrome)
-  .service("db", ["chrome", window.DbService]);
+  .service("db", ["chrome", window.DbService])
   .controller("MainCtrl", function($scope, $timeout, db) {
+    var maxItemId;
     $scope.appearance = {
       newSourceNamePlaceholderText: chrome.i18n.getMessage('news_newSourceNamePlaceholderText'),
       newSourceUrlPlaceholderText: chrome.i18n.getMessage('news_newSourceUrlPlaceholderText'),
       newSourceSectionText: chrome.i18n.getMessage('news_newSourceSectionText')
     };
+    $scope.newEntry = { name: '', url: '' };
 
     $scope.updateEntry = function(entry) {
       entry.edit = false;
     };
 
     $scope.createNewEntry = function() {
-
+      var newEntry = _.assign({ id: ++maxItemId }, $scope.newEntry);
+      db.save(newEntry).then(
+        function() {
+          $timeout(function() {
+            $scope.newEntry = { name: '', url: '' };
+            $scope.entries.push(addExtraField(newEntry));
+          });
+        },function() {
+          // TODO: save new entry unsuccessfully, now what ?
+      });
     };
 
     db.getAll().then(function(items) {
+      maxItemId = _.reduce(items, function(maxId, item) { return Math.max(maxId, item.id) }, 0);
       $timeout(function() {
         // TODO: handle case of empty data
-        $scope.entries = _.map(items, function(it) {
-          return _.assign({ edit: false }, it);
-        });
-      }, 0);
+        $scope.entries = _.map(items, addExtraField);
+      });
     }, function() {
       // TODO: now what ?
     });
+          
+    function addExtraField(item) { return _.assign({ edit: false }, item); }
   });
